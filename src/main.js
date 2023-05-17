@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import UniqueId from 'vue-unique-id'
 // import vue from 'vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
@@ -12,7 +11,7 @@ import store from './store.js'
 loadFonts()
 const app = createApp(App)
 app.config.globalProperties.$dateFns = { format } // Add format to globalProperties
-app.config.globalProperties.$unique = { UniqueId }
+// app.config.globalProperties.$unique = { UniqueId }
 app.use(router).use(store).use(vuetify).mount('#app')
 
 // import { createApp } from 'vue'

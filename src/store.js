@@ -8,7 +8,7 @@ const store = createStore({
     // Your state properties go here
     user: null,
     authToken: null,
-    isAuthenticated: false
+    isAuthenticated: true
   },
   mutations: {
     // Your mutation functions go here
@@ -30,10 +30,12 @@ const store = createStore({
       state.user = null
       state.authToken = null
       state.isAuthenticated = false
+    },
+    setAuthenticated(state, isAuthenticated) {
+      if (localStorage.getItem('authToken')) {
+        state.isAuthenticated = isAuthenticated
+      }
     }
-    // isAuthenticated(state) {
-    //   return !!state.token
-    // }
   },
   actions: {
     // Your action functions go here
@@ -44,6 +46,7 @@ const store = createStore({
       // console.log(response.data.user)
       commit('setUser', user)
       commit('setAuthToken', authToken)
+      commit('setAuthenticated', true)
       localStorage.setItem('authToken', authToken)
     },
     async signup({ commit }, userInfo) {
